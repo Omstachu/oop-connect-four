@@ -10,9 +10,10 @@ function updateUI() {
         boardHolder.classList.add("is-invisible");
     } else {
         boardHolder.classList.remove("is-invisible");
-      document.getElementById("game-name").innerHTML = game.getName();
+        document.getElementById("game-name").innerHTML = game.getName();
+        console.log(game);
 
-}
+    }
 }
 
 window.addEventListener("DOMContentLoaded", event => {
@@ -35,7 +36,7 @@ window.addEventListener("DOMContentLoaded", event => {
     checkName(p2Name);
 
     newGame.addEventListener("click", event => {
-        game = new Game(p1Name, p2Name)
+        game = new Game(p1Name.value, p2Name.value)
         p1Name.value = ""
         p2Name.value = ""
         newGame.disabled = true;
