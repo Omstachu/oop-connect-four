@@ -59,7 +59,6 @@ window.addEventListener("DOMContentLoaded", event => {
 
 
     clickTargets.addEventListener("click", event => {
-        debugger;
         game.playInColumn();
         console.log(game.turn)
         updateUI();
