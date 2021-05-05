@@ -5,7 +5,16 @@ export default class Game {
         this.playerOneName = playerOneName;
         this.playerTwoName = playerTwoName;
         this.turn = 1;
+        this.column = new Column();
+        this.columns = [];
 
+
+        this.columns = [];
+        for (let i = 0; i < 7; i++) {
+            this.columns.push(this.column);
+
+        }
+       
     }
 
     getName() {

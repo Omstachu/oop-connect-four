@@ -1,3 +1,5 @@
+
+
 export default class Column {
     constructor() {
         this.rows = [];
@@ -22,5 +24,3 @@ export default class Column {
         return this.rows[rowIndex];
     }
 }
-
-console.log("eg");

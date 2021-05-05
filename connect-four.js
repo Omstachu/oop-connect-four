@@ -1,5 +1,6 @@
 import Game from "./game.js"
 
+
 let game;
 const clickTargets = document.getElementById("click-targets");
 
@@ -15,7 +16,7 @@ function changeColor() {
 }
 
 function updateUI() {
-    console.log("update turn is " + game.turn)
+
     const boardHolder = document.getElementById("board-holder")
     if (game === undefined) {
         boardHolder.classList.add("is-invisible");
@@ -60,7 +61,7 @@ window.addEventListener("DOMContentLoaded", event => {
 
     clickTargets.addEventListener("click", event => {
         game.playInColumn();
-        console.log(game.turn)
+     
         updateUI();
     })
 
