@@ -9,12 +9,13 @@ export default class Game {
     }
 
     playInColumn() {
-        document.getElementById("click-targets").addEventListener("click", event => {
-            if (this.turn === 1) {
-                this.turn = 2;
-            } else { this.turn = 1 }
-            event.stopPropagation();
-        })
+        // ? adding a click listener here broke the code because of ??
+        // ? external click event was ran asynchronously with internal event;
+        if (this.turn === 1) {
+            this.turn = 2;
+        } else {
+            this.turn = 1
+        }
     }
 
 

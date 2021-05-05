@@ -4,7 +4,6 @@ let game;
 const clickTargets = document.getElementById("click-targets");
 
 function changeColor() {
-
     if (game.turn === 1) {
         clickTargets.classList.remove("red");
         clickTargets.classList.add("black");
@@ -16,6 +15,7 @@ function changeColor() {
 }
 
 function updateUI() {
+    console.log("update turn is " + game.turn)
     const boardHolder = document.getElementById("board-holder")
     if (game === undefined) {
         boardHolder.classList.add("is-invisible");
@@ -59,8 +59,9 @@ window.addEventListener("DOMContentLoaded", event => {
 
 
     clickTargets.addEventListener("click", event => {
-        console.log(game.turn);
+        debugger;
         game.playInColumn();
+        console.log(game.turn)
         updateUI();
     })
 
