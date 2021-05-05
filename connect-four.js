@@ -59,10 +59,6 @@ window.addEventListener("DOMContentLoaded", event => {
 
 
     clickTargets.addEventListener("click", event => {
-<<<<<<< HEAD
-=======
-        
->>>>>>> de051201711d12916389193413e3514053f68e50
         game.playInColumn();
         console.log(game.turn)
         updateUI();
