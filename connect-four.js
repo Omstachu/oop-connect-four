@@ -1,8 +1,19 @@
 import Game from "./game.js"
 
 let game;
+const clickTargets = document.getElementById("click-targets");
 
+function changeColor() {
 
+    if (game.turn === 1) {
+        clickTargets.classList.remove("red");
+        clickTargets.classList.add("black");
+    } else {
+        clickTargets.classList.remove("black");
+        clickTargets.classList.add("red")
+    }
+
+}
 
 function updateUI() {
     const boardHolder = document.getElementById("board-holder")
@@ -11,9 +22,10 @@ function updateUI() {
     } else {
         boardHolder.classList.remove("is-invisible");
         document.getElementById("game-name").innerHTML = game.getName();
-        console.log(game);
+    };
+    changeColor();
 
-    }
+
 }
 
 window.addEventListener("DOMContentLoaded", event => {
@@ -44,5 +56,12 @@ window.addEventListener("DOMContentLoaded", event => {
 
     })
 
+
+
+    clickTargets.addEventListener("click", event => {
+        console.log(game.turn);
+        game.playInColumn();
+        updateUI();
+    })
 
 })

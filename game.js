@@ -13,7 +13,7 @@ export default class Game {
             if (this.turn === 1) {
                 this.turn = 2;
             } else { this.turn = 1 }
-
+            event.stopPropagation();
         })
     }
 
