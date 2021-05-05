@@ -20,3 +20,7 @@ export default class Game {
 
 
 }
+
+
+
+// going to have column class, iterate through and push 7 different column classes with 7 identifiers
