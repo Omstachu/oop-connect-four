@@ -2,6 +2,19 @@ import Game from "./game.js"
 
 let game;
 
+
+
+function updateUI() {
+    const boardHolder = document.getElementById("board-holder")
+    if (game === undefined) {
+        boardHolder.classList.add("is-invisible");
+    } else {
+        boardHolder.classList.remove("is-invisible");
+      document.getElementById("game-name").innerHTML = game.getName();
+
+}
+}
+
 window.addEventListener("DOMContentLoaded", event => {
 
     const p1Name = document.getElementById("player-1-name");
@@ -27,6 +40,7 @@ window.addEventListener("DOMContentLoaded", event => {
         p2Name.value = ""
         newGame.disabled = true;
         updateUI();
+
     })
 
 
