@@ -8,7 +8,8 @@ export default class ColumnWinInspector {
         for (let i = 5; i >= 3; i--) {
             let row = this.columnObj.rows;
             // console.log(row[i], row[i - 1], row[i - 2], row[i - 3])
-            if (row[i] == row[i - 1] == row[i - 2] == row[i - 3]) {
+            if (row[i] === row[i - 1] && row[i - 1] === row[i - 2] && row[i - 2] === row[i - 3]) {
+
                 return row[i];
             }
         }

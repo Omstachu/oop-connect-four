@@ -77,7 +77,6 @@ export default class Game {
             let column = this.columns[i];
             const newInspector = new ColumnWinInspector(column);
             const winnerVal = newInspector.inspect();
-            console.log(winnerVal);
             if (winnerVal) {
                 this.winnerNumber = winnerVal;
             }
