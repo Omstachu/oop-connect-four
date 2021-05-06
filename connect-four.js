@@ -37,13 +37,13 @@ function updateUI() {
                 const div = document.createElement("div");
                 div.classList.add("token", "black");
                 square.appendChild(div);
-                console.log(square);
+                // console.log(square);
             } else if (tokenNum === 2) {
                 const div = document.createElement("div");
                 div.classList.add("token", "red");
                 square.appendChild(div);
             }
-    }
+        }
     }
 
 }
