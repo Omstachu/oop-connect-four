@@ -18,7 +18,7 @@ function changeColor() {
 let number = 0;
 clickTargets.addEventListener("click", event => {
     number = Number(event.target.id.split("-")[1]);
-    // console.log(number);
+    
 });
 
 function updateUI() {
