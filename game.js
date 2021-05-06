@@ -1,4 +1,5 @@
 import Column from "./column.js"
+import ColumnWinInspector from "./column-win-inspector.js"
 
 export default class Game {
     constructor(playerOneName, playerTwoName) {
@@ -18,6 +19,9 @@ export default class Game {
     getName() {
         if (this.winnerNumber === 3) {
             return `${this.playerOneName} ties with ${this.playerTwoName}`
+            
+        } else if (this.winnerNumber < 3 && this.winnerNumber > 0) {
+            return this.winnerNumber;
         }
         return `${this.playerOneName} vs ${this.playerTwoName}`
     }
@@ -53,6 +57,20 @@ export default class Game {
         // }
 
     }
+    checkForColumnWin() {
+        if (this.winnerNumber) {
+            return;
+        };
+        for (let i = 0; i < 7; i++) {
+            let column = this.columns[i];
+            const newInspector = new ColumnWinInspector(column);
+            const winnerVal = newInspector.inspect();
+            if (winnerVal) {
+                this.winnerNumber = winnerVal;
+            }
+        }
+    }
+
     playInColumn(colIndex) {
         // ? adding a click listener here broke the code because of ??
         // ? external click event was ran asynchronously with internal event;
@@ -80,6 +98,8 @@ export default class Game {
     isColumnFull(colIndex) {
         return this.columns[colIndex].isFull()
     }
+
+
 
 }
 
