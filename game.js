@@ -9,18 +9,20 @@ export default class Game {
 
         this.columns = [];
         for (let i = 0; i < 7; i++) {
-             this.columns.push(new Column());
+            this.columns.push(new Column());
 
         }
 
     }
 
     getName() {
+        if (this.winnerNumber === 3) {
+            return `${this.playerOneName} ties with ${this.playerTwoName}`
+        }
         return `${this.playerOneName} vs ${this.playerTwoName}`
     }
     checkForTie() {
-    let reducer = this.columns.reduce((full, column) => {
-
+        let reducer = this.columns.reduce((full, column) => {
             if (column.isFull()) {
                 return full + 1;
             } else {
@@ -28,27 +30,43 @@ export default class Game {
             }
 
 
-    });
+        }, 0);
 
-        if (reducer === 6) {
+        if (reducer === 7) {
             this.winnerNumber = 3;
         }
 
-}
+        // let res = this.columns.reduce(function(full, column) {
+        //     if (full === false) {
+        //         return full;
+        //     }
+        //     if (column.isFull()) {
+        //         return true;
+        //     }
+        //     return false;
+
+
+        // }, true)
+
+        // if (res) {
+        //     this.winnerNumber = 3;
+        // }
+
+    }
     playInColumn(colIndex) {
         // ? adding a click listener here broke the code because of ??
         // ? external click event was ran asynchronously with internal event;
 
 
 
-            this.columns[colIndex].add(this.turn);
-
+        this.columns[colIndex].add(this.turn);
 
         if (this.turn === 1) {
             this.turn = 2;
         } else {
             this.turn = 1
         }
+
 
         this.checkForTie()
     }
