@@ -28,15 +28,16 @@ function updateUI() {
 
     for (let row = 0; row < 6; row++) {
         for (let col = 0; col < 7; col++) {
-
             const square = document.getElementById(`square-${row}-${col}`);
-            const tokenNum = game.getTokenAt(row, col);
+            let tokenNum = game.getTokenAt(row, col);
 
             square.innerHTML = "";
             if (tokenNum === 1) {
+
                 const div = document.createElement("div");
                 div.classList.add("token", "black");
                 square.appendChild(div);
+                debugger;
                 // console.log(square);
             } else if (tokenNum === 2) {
                 const div = document.createElement("div");
@@ -45,6 +46,7 @@ function updateUI() {
             }
         }
     }
+
 
 }
 

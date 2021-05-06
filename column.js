@@ -1,5 +1,3 @@
-
-
 export default class Column {
     constructor() {
         this.rows = [];
@@ -11,6 +9,7 @@ export default class Column {
     add(playerNum) {
         // * take playerNum and store it in bottom most row;
 
+        // ? WORKING
         for (let i = this.rows.length - 1; i >= 0; i--) {
             if (this.rows[i] === null) {
                 this.rows[i] = playerNum;
