@@ -60,8 +60,10 @@ window.addEventListener("DOMContentLoaded", event => {
 
 
     clickTargets.addEventListener("click", event => {
-        game.playInColumn();
-     
+        const colNum = Number(event.target.id.split("-")[1]);
+        // const colNum = Number.parseInt(event.target.id.split("-")[1]);
+        game.playInColumn(colNum);
+
         updateUI();
     })
 

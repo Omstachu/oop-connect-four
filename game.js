@@ -24,7 +24,7 @@ export default class Game {
     playInColumn(colIndex) {
         // ? adding a click listener here broke the code because of ??
         // ? external click event was ran asynchronously with internal event;
-
+        console.log(this.columns)
         this.columns[colIndex].add(this.turn);
 
         if (this.turn === 1) {
@@ -32,6 +32,10 @@ export default class Game {
         } else {
             this.turn = 1
         }
+    }
+
+    getTokenAt(rowIndex, colIndex) {
+        return this.columns[colIndex].getTokenAt(rowIndex);
     }
 
 
