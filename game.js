@@ -17,13 +17,25 @@ export default class Game {
     }
 
     getName() {
-        if (this.winnerNumber === 3) {
-            return `${this.playerOneName} ties with ${this.playerTwoName}`
-            
-        } else if (this.winnerNumber < 3 && this.winnerNumber > 0) {
-            return this.winnerNumber;
+        // if (this.winnerNumber === 3) {
+        //     return `${this.playerOneName} ties with ${this.playerTwoName}`
+
+        // } else if (this.winnerNumber < 3 && this.winnerNumber > 0) {
+        //     return this.winnerNumber;
+        // }
+
+        switch (this.winnerNumber) {
+            case 3:
+                return `${this.playerOneName} ties with ${this.playerTwoName}`;
+            case 2:
+                return `${this.playerTwoName} Wins!`;
+            case 1:
+                return `${this.playerOneName} Wins!`;
+            default:
+                return `${this.playerOneName} vs ${this.playerTwoName}`;
         }
-        return `${this.playerOneName} vs ${this.playerTwoName}`
+
+
     }
     checkForTie() {
         let reducer = this.columns.reduce((full, column) => {
@@ -65,6 +77,7 @@ export default class Game {
             let column = this.columns[i];
             const newInspector = new ColumnWinInspector(column);
             const winnerVal = newInspector.inspect();
+            console.log(winnerVal);
             if (winnerVal) {
                 this.winnerNumber = winnerVal;
             }
@@ -87,6 +100,7 @@ export default class Game {
 
 
         this.checkForTie()
+        this.checkForColumnWin();
     }
 
 
@@ -96,6 +110,9 @@ export default class Game {
     }
 
     isColumnFull(colIndex) {
+        if (this.winnerNumber) {
+            return true;
+        }
         return this.columns[colIndex].isFull()
     }
 
