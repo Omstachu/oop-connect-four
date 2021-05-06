@@ -14,6 +14,12 @@ function changeColor() {
     }
 
 }
+/// testing
+let number = 0;
+clickTargets.addEventListener("click", event => {
+    number = Number(event.target.id.split("-")[1]);
+    // console.log(number);
+});
 
 function updateUI() {
 
@@ -26,27 +32,40 @@ function updateUI() {
     };
     changeColor();
 
+
     for (let row = 0; row < 6; row++) {
         for (let col = 0; col < 7; col++) {
-            const square = document.getElementById(`square-${row}-${col}`);
-            let tokenNum = game.getTokenAt(row, col);
 
-            square.innerHTML = "";
-            if (tokenNum === 1) {
+                const square = document.getElementById(`square-${row}-${col}`);
+                let tokenNum = game.getTokenAt(row, col);
 
-                const div = document.createElement("div");
-                div.classList.add("token", "black");
-                square.appendChild(div);
-                debugger;
-                // console.log(square);
-            } else if (tokenNum === 2) {
-                const div = document.createElement("div");
-                div.classList.add("token", "red");
-                square.appendChild(div);
-            }
+
+                square.innerHTML = "";
+                if (tokenNum === 1) {
+
+                    const div = document.createElement("div");
+                    div.classList.add("token", "black");
+                    square.appendChild(div);
+                    tokenNum = null;
+
+                } else if (tokenNum === 2) {
+                    const div = document.createElement("div");
+                    div.classList.add("token", "red");
+                    square.appendChild(div);
+
+                }
+
         }
     }
+    for (let i = 0; i < 7; i++) {
+        const ele = document.getElementById(`column-${i}`);
 
+        if (game.isColumnFull(i)) {
+            ele.classList.add("full");
+        } else {
+            ele.classList.remove("full");
+        }
+    }
 
 }
 
@@ -82,13 +101,14 @@ window.addEventListener("DOMContentLoaded", event => {
 
     clickTargets.addEventListener("click", event => {
         const colNum = Number(event.target.id.split("-")[1]);
-
+      //  console.log(colNum);
         // using number.parseInt from instructions
         // const colNum = Number.parseInt(event.target.id.split("-")[1]);
 
 
-        console.log(colNum);
+
         game.playInColumn(colNum);
+
 
         updateUI();
     })
